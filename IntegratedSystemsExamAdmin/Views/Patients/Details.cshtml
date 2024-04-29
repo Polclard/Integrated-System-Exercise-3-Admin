@@ -1,0 +1,68 @@
+﻿﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IntegratedSystemsExamAdmin.Models.Patient
+
+
+
+@*         public Guid Id { get; set; }
+        public string? Embg { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? PhoneNumber { get; set; }
+        public string? Email { get; set; }
+        public ICollection<Vaccine>
+    ? VaccinationSchedule { get; set; } *@
+<div class="container">
+    <div>
+        <h1>Patient with id @Model.Id</h1>
+        <hr />
+    </div>
+    <table class="table table-striped table-bordered">
+        <thead>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Embg</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        </thead>
+        <tbody>
+        <td>@Model.Id</td>
+        <td>@Model.FirstName</td>
+        <td>@Model.LastName</td>
+        <td>@Model.Embg</td>
+        <td>@Model.PhoneNumber</td>
+        <td>@Model.Email</td>
+        </tbody>
+    </table>
+
+    <hr />
+    <h1>All Vaccination for patient @Model.FirstName @Model.LastName</h1>
+    <hr />
+    <table class="table table-bordered table-striped">
+        <thead>
+            <th>#</th>
+            <th>Center</th>
+            <th>Date Taken</th>
+            <th>Certificate</th>
+        </thead>
+        <tbody>
+            @for(int i = 0; i < Model.VaccinationSchedule.Count(); i++)
+            {
+                var item = Model.VaccinationSchedule.ToList()[i];
+               
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@item.Center.Name</td>
+                    <td>@item.DateTaken</td>
+                    <td>@item.Certificate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a class="btn btn-info" asp-controller="Patients" asp-action="Index">Go Back</a>

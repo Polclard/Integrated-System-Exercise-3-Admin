@@ -1,0 +1,37 @@
+﻿﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IntegratedSystemsExamAdmin.Models.Vaccine
+
+<div class="container">
+    <div>
+        <h1>Vaccine with id @Model.Id</h1>
+        <hr />
+    </div>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <th>Id</th>
+                <th>Manufacturer</th>
+                <th>Date Taken</th>
+                <th>Vaccination Center</th>
+                <th>Patient Name And Surname</th>
+            </thead>
+            <tbody>
+                <td>@Model.Id</td>
+                <td>@Model.Manufacturer</td>
+                <td>@Model.DateTaken</td>
+                <td>@Model.VaccinationCenter</td>
+                <td>@Model.PatientFor.FirstName @Model.PatientFor.LastName</td> 
+            </tbody>
+            <tfoot>
+                <th>Id</th>
+                <th>Manufacturer</th>
+                <th>Date Taken</th>
+                <th>Vaccination Center</th>
+                <th>Patient Name And Surname</th>
+            </tfoot>
+        </table> 
+        <a class="btn btn-info" asp-controller="Vaccines" asp-action="Index">Go Back</a>
